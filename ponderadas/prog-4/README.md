@@ -22,34 +22,39 @@ Onde:
 ```go.mod```: Módulo do Go.
 ```publisher.go```: Arquivo que possui o código necessário para criar um publicador e um loop para as mensagens serem publicadas;
 ```sub/subscriber.go```: Arquivo que possui o código necessário para criar um subscriber a fim de visualizar as mensagens publicadas;
-```simulation_test.go```: Arquivo que possui o código necessário com testes automatizados para simular ocasiões em que o publisher possa não funcionar;
-```mosquito.conf```: Arquivo necessário para a criação do broker mqtt;
+```simulation_test.go```: Arquivo que possui o código necessário com testes automatizados para simular ocasiões em que o publisher ou a conexão possa não funcionar;
+```.env.example```: Arquivo de ambiente para guardar de forma segura alguns valores que podem ser secretos, nesse caso, você precisa completar alguns valores, como explicado na sessão ```Configurando .env```
 
 ## Como usar
-Primeiro, certifique-se de possuir o Go e o Mosquitto MQTT Broker que podem ser instalados, respectivamente, nos seguintes links:
 
-- [Go](https://go.dev/dl/)
-- [Mosquitto](https://mosquitto.org/download/)
+Primeiro, certifique-se de criar uma conta no (HiveMQ)[https://www.hivemq.com] com um servidor configurado e de possuir o [Go](https://go.dev/dl/):
 
 Instale as dependências neste diretório:
 <pre><code>go mod tidy</code></pre>
 
-Agora, com 4 terminais, podemos:
+### Configurando .env
 
-### Broker MQTT
-Inicie o broker MQTT (garantindo que que o Mosquitto MQTT Broker esteja instalado). Com isso, podemos iniciar o broker MQTT:
-<pre><code>mosquitto -c mosquito.conf</code></pre>
+Agora, assim como dito anteriormente, crie um arquivo ```.env``` e complete ele com os seguintes valores:
+<code><pre>BROKER_ADDR="your address"
+HIVE_USER="your user"
+HIVE_PSWD="your password"</pre></code>
+
 
 ### Publisher
 Para iniciar o publisher, basta executar o arquivo ```publisher.go```:
 <pre><code>go run publisher.go</code></pre>
 
 ### Visualizar as mensagens recebidas
-Também podemos visualizar as mensagens recebidas pelo broker, então vamos nos inscrever utilizando o ```sub/subscriber.go```:
-<pre><code>go run sub/subsciber.go</code> </pre>
+Inicie sua conta no (HiveMQ)[https://www.hivemq.com], acesse a aba "Web Client" e verifique se as mensagens estão sendo publicadas:
+
+![Mensagens publicadas no broker](images/broker.png)
+![Mensagens sendo publicadas pelo terminal](images/publishing.png)
 
 ### Testar o ambiente MQTT
+
 Por último, vamos testar todo esse ambiente que criamos. Nesta automação, 3 testes são realizados:
+
+- Variáveis de ambiente (.env);
 - Conexão;
 - Validação das mensagens;
 - Teste de publicação;
@@ -58,18 +63,23 @@ Para isso, executamos o teste em Go:
 <pre><code>go test -v -cover</code> </pre>
 
 Resultado esperado:
-<pre><code>=== RUN   TestConection
-        simulation_test.go:20: Connection with broker MQTT succeeded
-    --- PASS: TestConection (0.00s)
-    === RUN   TestDataValidation
-        simulation_test.go:34: Data validation successfull
-    --- PASS: TestDataValidation (0.00s)
-    === RUN   TestPublisher
-        simulation_test.go:84: Message received
-    --- PASS: TestPublisher (0.00s)
-    PASS
-    coverage: 10.5% of statements
-    ok  	mqtt-go	0.003s</code></pre>
+<pre><code>=== RUN   TestDotenv
+Broker address: your address
+Username: your username
+Password: your password
+--- PASS: TestDotenv (0.00s)
+=== RUN   TestConection
+Connected
+--- PASS: TestConection (1.01s)
+=== RUN   TestDataValidation
+    simlation_test.go:61: Data validation successfull
+--- PASS: TestDataValidation (0.00s)
+=== RUN   TestPublisher
+Connection lost: EOFConnected
+    simlation_test.go:127: Message received
+--- PASS: TestPublisher (1.24s)
+PASS
+coverage: 12.1% of statements
+ok      go-hive 2.414s</code></pre>
 
 ## Demonstração
-[go.webm](https://github.com/Lukovsk/Inteli-Modulo-9/assets/99260684/7fef6ce1-09af-444e-87bb-fb80cd93bb80)
