@@ -4,11 +4,6 @@
 
 Nessa atividade, deve-se desenvolver a integração entre o simulador desenvolvido nas duas primeiras atividades ponderadas e um cluster configurado no HiveMQ. Para tal, deve-se garantir que o simulador é capaz de se comunicar utilizando autenticação em camada de transporte (TLS).
 
-## Conteúdo
-
-Este é um simulador de sensor MiCS-6814 que gera dados fictícios para simular a leitura de gases como CO, NO2 e NH3, e os envia via MQTT.
-Aqui contém um simulador de sensor MiCS-6814 que gera dados fictícios para simular a leitura de gases e comunicação MQTT com testes automáticos.
-
 ## Estrutura de pastas
 <pre><code>prog-2/
 │
@@ -23,7 +18,7 @@ Onde:
 ```publisher.go```: Arquivo que possui o código necessário para criar um publicador e um loop para as mensagens serem publicadas;
 ```sub/subscriber.go```: Arquivo que possui o código necessário para criar um subscriber a fim de visualizar as mensagens publicadas;
 ```simulation_test.go```: Arquivo que possui o código necessário com testes automatizados para simular ocasiões em que o publisher ou a conexão possa não funcionar;
-```.env.example```: Arquivo de ambiente para guardar de forma segura alguns valores que podem ser secretos, nesse caso, você precisa completar alguns valores, como explicado na sessão ```Configurando .env```
+```.env```: Arquivo de ambiente para guardar de forma segura alguns valores que podem ser secretos, nesse caso, você precisa completar alguns valores, como explicado na sessão ```Configurando .env```
 
 ## Como usar
 
@@ -83,3 +78,4 @@ coverage: 12.1% of statements
 ok      go-hive 2.414s</code></pre>
 
 ## Demonstração
+[gopub.webm](https://github.com/Lukovsk/Inteli-Modulo-9/assets/99260684/03da17b9-8a6c-4e89-95f1-f55d45935088)
