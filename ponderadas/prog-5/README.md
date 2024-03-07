@@ -4,9 +4,8 @@
 
 Nessa atividade, deve-se desenvolver a integração entre o simulador desenvolvido nas três primeiras atividades e um dashboard desenvolvido usando o Metabase, com persistência de dados em um banco de dados a sua escolha.
 
-
 ## Estrutura de pastas
-<pre><code>prog-2/
+<pre><code>prog-5/
 │
 ├── db/db.db
 ├── go.mod
@@ -60,3 +59,4 @@ Depois, basta rodar o seguinte comando neste diretório, ele criará um novo con
 Dessa forma, basta ir no seu [localhost:3000](http://localhost:3000) e configurar seu metabase para criar um dashboard com os dados dos sensores.
 
 ## Demonstração
+[metabase.webm](https://github.com/Lukovsk/Inteli-Modulo-9/assets/99260684/fd04b2af-36b2-4b7b-8bb7-c18b92d6b15f)
