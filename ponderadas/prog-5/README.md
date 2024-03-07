@@ -41,12 +41,6 @@ HIVE_PSWD="your password"</pre></code>
 Para iniciar o publisher, que publicará, constantemente, dados dos sensores, o subscriber, que mostrar-los-á no terminal e guardar-los-á no banco de dados, basta executar o arquivo ```main.go``` junto com todos os outros arquivos ```.go```:
 <pre><code>go run *.go</code></pre>
 
-### Visualizar as mensagens recebidas no HiveMQ
-Inicie sua conta no [HiveMQ](https://www.hivemq.com), acesse a aba "Web Client" e verifique se as mensagens estão sendo publicadas:
-
-![Mensagens publicadas no broker](images/broker.png)
-![Mensagens sendo publicadas pelo terminal](images/publishing.png)
-
 ### Rodando o Metabase
 Como uma espécie de frontend, utilizamos o [Metabase](https://www.metabase.com/). Para rodá-lo, com o docker instalado, baixe a imagem do metabase:
 
