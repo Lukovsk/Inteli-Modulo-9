@@ -36,7 +36,7 @@ func GetData() *Sensor {
 	data := &Sensor{
 		Id:        id,
 		Group:     group[1],
-		Temp:      rand.Int31n(35) - 30,
+		Temp:      rand.Int31n(45) - 30,
 		Timestamp: time.Now().Format(time.RFC3339),
 	}
 	return data

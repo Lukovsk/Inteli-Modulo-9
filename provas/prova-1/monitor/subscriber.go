@@ -37,11 +37,21 @@ var messageSubHandler mqtt.MessageHandler = func(client mqtt.Client, msg mqtt.Me
 	var alert = ""
 	if group == "freezer" {
 		if strconv.Atoi(temp) > -15 {
-			alert = ""
+			alert = "[ALERTA: Temperatura ALTA]"
+		}
+		if strconv.Atoi(temp) < -25 {
+			alert = "[ALERTA: Temperatura BAIXA]"
+		}
+	} else if group == "geladeira" {
+		if strconv.Atoi(temp) > 10 {
+			alert = "[ALERTA: Temperatura ALTA]"
+		}
+		if strconv.Atoi(temp) < 2 {
+			alert = "[ALERTA: Temperatura BAIXA]"
 		}
 	}
 
-	fmt.Printf("Lj %v: %v %v | %v %v", id, group, temp, times)
+	fmt.Printf("Lj %v: %v %v | %v %v", id, group, temp, times, alert)
 
 }
 
