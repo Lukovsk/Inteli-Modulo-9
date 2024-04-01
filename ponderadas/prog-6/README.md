@@ -52,4 +52,6 @@ Depois, basta rodar o seguinte comando neste diretório, ele criará um novo con
 Dessa forma, basta ir no seu [localhost:3000](http://localhost:3000) e configurar seu metabase para criar um dashboard com os dados dos sensores.
 
 ## Demonstração
+[84fc15b7-e167-453b-b876-1f0e0454c132.webm](https://github.com/Lukovsk/Inteli-Modulo-9/assets/99260684/fb7aafbd-c9c9-4e86-b788-783c148a6991)
+
 
