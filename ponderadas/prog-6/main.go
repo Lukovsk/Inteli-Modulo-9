@@ -9,7 +9,6 @@ import (
 	"time"
 
 	godotenv "github.com/joho/godotenv"
-	_ "github.com/mattn/go-sqlite3"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"

@@ -48,7 +48,7 @@ func Subscriber(dbPointer *mongo.Collection) {
 	var port = 8883
 	var topic = "/mqtt/sensor"
 
-		 = dbPointer
+	db = dbPointer
 
 	opts := mqtt.NewClientOptions()
 	opts.AddBroker(fmt.Sprintf("tls://%s:%d", broker, port))
