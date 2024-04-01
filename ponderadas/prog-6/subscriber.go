@@ -15,7 +15,6 @@ import (
 
 var db *mongo.Collection
 
-
 var connectHandler mqtt.OnConnectHandler = func(client mqtt.Client) {
 	fmt.Println("Connected")
 }

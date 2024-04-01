@@ -2,11 +2,9 @@ package main
 
 import (
 	"context"
-	"database/sql"
 	"fmt"
 	"log"
 	"os"
-	"time"
 
 	godotenv "github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/bson"
@@ -32,11 +30,11 @@ func main() {
 		panic(err)
 	}
 
-	database := client.Database("Modulo9")
+	database := client.Database("pond")
 
 	colection := database.Collection("Sensors")
 
-	// go Publisher()
+	go Publisher()
 	Subscriber(colection)
 	select {}
 }
@@ -55,23 +53,4 @@ func Insert(data Sensor, db *mongo.Collection) {
 		log.Fatal(err)
 	}
 	fmt.Printf("Document %s inserted successfully, id: %s", document, response.InsertedID)
-}
-
-func Select(db *sql.DB) {
-	row, err := db.Query("SELECT * FROM sensor ORDER BY timestamp")
-	if err != nil {
-		log.Fatalln(err.Error())
-	}
-
-	defer row.Close()
-	for row.Next() {
-		var id int
-		var sensor string
-		var NH3_ppm int
-		var CO_ppm int
-		var NO2_ppm int
-		var timestamp time.Time
-		row.Scan(&id, &sensor, &NH3_ppm, &CO_ppm, &NO2_ppm, &timestamp)
-		log.Println("Sensor data: %v - %v - %v - %v - %v - %v", id, sensor, NH3_ppm, CO_ppm, NO2_ppm, timestamp)
-	}
 }
