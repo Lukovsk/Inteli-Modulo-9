@@ -1,8 +1,8 @@
-# Atividade 6: Integração do simulador com o MongoDB
+# Atividade 7: Integração entre o Kafka cloud e o HiveMQ
 
 ## Enunciado
 
-Nessa atividade, deve-se desenvolver a integração entre o simulador desenvolvido nas três primeiras atividades e um dashboard desenvolvido usando o Metabase, com persistência de dados em um banco de dados a sua escolha.
+Nessa atividade, deve-se desenvonver a integração entre o cluster do HiveMQ e um provedor de Kafka em nuvem.
 
 ## Estrutura de pastas
 
@@ -56,6 +56,8 @@ O teste é composto pelo seguinte esquema:
 ![alt text](media/comparando.png)
 
 ## Demonstração
+[6d97bc78-81a2-4e92-820b-34d063d284f0.webm](https://github.com/Lukovsk/Inteli-Modulo-9/assets/99260684/ec2e5763-e563-407d-a53a-38e0d50536dc)
+
 
 
 
