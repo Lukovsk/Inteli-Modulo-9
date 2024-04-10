@@ -5,6 +5,7 @@
 Nessa atividade, deve-se desenvolver a integração entre o simulador desenvolvido nas três primeiras atividades e um dashboard desenvolvido usando o Metabase, com persistência de dados em um banco de dados a sua escolha.
 
 ## Estrutura de pastas
+
 <pre><code>prog-7/
 │
 ├── go.mod
@@ -16,8 +17,7 @@ Nessa atividade, deve-se desenvolver a integração entre o simulador desenvolvi
 Onde:   
 ```go.mod```: Módulo do Go.
 ```publisher.go```: Arquivo que possui o código necessário para criar um publicador e um loop para as mensagens serem publicadas;
-```subscriber.go```: Arquivo que possui o código necessário para criar um subscriber a fim de visualizar as mensagens publicadas E guardá-las no banco de dados;
-```main.go```: Arquivo que possui o código necessário para setar o ambiente do banco de dados e inicializar o sistema;
+```pipe_test.go```: Arquivo que possui o código necessário para testar a pipeline;
 ```.env```: Arquivo de ambiente para guardar de forma segura alguns valores que podem ser secretos, nesse caso, você precisa completar alguns valores, como explicado na sessão ```Configurando .env```
 
 ## Como usar
@@ -36,22 +36,26 @@ HIVE_PSWD="your password"
 MONGO_URL="mongodb+srv://<usuario>:<senha>@<host>/<banco>"</pre></code>
 
 
-### Backend
-Para iniciar o publisher, que publicará, constantemente, dados dos sensores, o subscriber, que mostrar-los-á no terminal e guardar-los-á no banco de dados, basta executar o arquivo ```main.go``` junto com todos os outros arquivos ```.go```:
-<pre><code>go run *.go</code></pre>
+### Teste
+O teste é composto pelo seguinte esquema:
 
-### Rodando o Metabase
-Como uma espécie de frontend, utilizamos o [Metabase](https://www.metabase.com/). Para rodá-lo, com o docker instalado, baixe a imagem do metabase:
+#### Inicialização do mongo
 
-<pre><code>docker pull metabase/metabase</code></pre>
+![alt text](media/mongo.png)
 
-Depois, basta rodar o seguinte comando neste diretório, ele criará um novo container com a imagem do metabase e colocará o banco de dados local como volume para o frontend:
+#### Publicando um dado
 
-<pre><code>docker run -d -p 3000:3000 -v $(pwd)/db/db.db:/db.db --name metabase metabase/metabase</code></pre>
+![alt text](media/publishing.png)
 
-Dessa forma, basta ir no seu [localhost:3000](http://localhost:3000) e configurar seu metabase para criar um dashboard com os dados dos sensores.
+#### Acessando o dado da collection do mongo
+
+![alt text](media/filter.png)
+
+#### Comprarando 
+
+![alt text](media/comparando.png)
 
 ## Demonstração
-[84fc15b7-e167-453b-b876-1f0e0454c132.webm](https://github.com/Lukovsk/Inteli-Modulo-9/assets/99260684/fb7aafbd-c9c9-4e86-b788-783c148a6991)
+
 
 
